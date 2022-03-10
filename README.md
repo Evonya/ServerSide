@@ -1,5 +1,5 @@
 # ServerSide
-This is the website I done for my server side web course.
+This is the website I have done for my server side web course.
 
 ---------------------------------------------------------
 
