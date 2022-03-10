@@ -4,6 +4,7 @@ This is the website I done for my server side web course.
 ---------------------------------------------------------
 
 1.	Purpose of Web Site
+
 A kind of portfolio of myself. You can know more about me and my friends. You can also contact me or access to my social medias. But unfortunately I didn't come up with a more original idea because I thought that the idea was not important.
 MAIN  The main elements are in all the pages :
 •	Footer : The footer is at the end of all pages. It contains the contact details, different links of social medias for instance and the news.
@@ -21,17 +22,23 @@ PERSON ADDED  When the friend  is added thanks to the form, the web site redi
 ---------------------------------------------------------
 
 2.	What you found most difficult about creating the site.
+
+
 I really like to create pretty things, so I struggled a lot to make everything look good with 3 languages I never used before.
 Also, the button who changes the color of the website was very difficult but I found a working method but I’m not satisfied about that. I want to save the choice of the user with a cookie. I will try to create a boolean variable for instance.
 
 ---------------------------------------------------------
 
 3.	Elements which are not working
+
+
 The home page isn’t really responsive due to lack of time (but I will solve it, just need to change some properties in css and add a container taking the text and the animated cube).
 The form to send me an email doesn’t work yet because I have to host my website in a server.
 
 ---------------------------------------------------------
 
 4.	Any part you want to draw my attention to.
+
+
 If you look at my code, don't look at the style.css … it's not quite tidy yet but it will be in the future!
 
