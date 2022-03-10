@@ -1,0 +1,14 @@
+
+<ul>
+  {{#each listing}}
+    <li>
+      <div class="button-group">
+        <a href=/friends/{{this.name}}><button class="bn5">{{this.name}}</button></a>
+      </div>
+    </li>
+  {{/each}}
+  <div class="button-group">
+    <a href="friends/addnew"><button class="bn5" id="newFriend">Add a new friend</button></a>
+  </div>
+</ul>
+

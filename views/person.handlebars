@@ -1,0 +1,25 @@
+
+<h2> All about {{person.name}}</h2> 
+
+ 
+
+<h3>Name : {{person.name}}</h3> 
+
+ 
+
+{{#if person.dob}} 
+
+<h3>Date of Birth : {{person.dob}}</h3> 
+
+{{/if}} 
+
+
+<img src={{person.imageurl}} alt="photo of the person" id="photo">
+
+<ul>
+  <h1>Super Power : </h1>
+  {{#each person.hobbies}}
+    <li>{{this}}</li>
+  {{/each}}
+</ul>
+
