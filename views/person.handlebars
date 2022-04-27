@@ -23,3 +23,11 @@
   {{/each}}
 </ul>
 
+<ul style="top: 50;">
+  <a href='{{person.name}}/edit'>
+  <button class="bn5" id="editbtn">Edit</button></a>
+
+  <a href='/friends/{{person.name}}/delete'
+  onclick="return confirm('are you sure you want to delete this person?');">
+  <button class="bn5" id="deletebtn">Delete</button> </a>
+</ul>

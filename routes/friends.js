@@ -1,4 +1,5 @@
 const express = require('express');
+const { readFriends , createFriends, deleteFriends, updateFriends } = require('../models/friends');
 const router = express.Router();
 
 const linksForHome = 
@@ -6,65 +7,114 @@ const linksForHome =
 {url: 'https://www.linkedin.com/in/jacques-remy-015268198/', text: 'My linkedin'},
 {url: 'https://www.facebook.com/jacques.remy69/', text:'My Facebook'}];
 
-var data = {"baptiste" : { "name": "baptiste Prevot",
-         "dob": "06/11/2002",
-        "imageurl": "/images/baptiste.jpeg",
-        "hobbies": ["Can drink alcohol endlessly"]},
-
-"cyriaque" :  { "name": "cyriaque Devisme",
-        "dob": "03/05/2002",
-       "imageurl": "/images/cyriaque.jpg",
-       "hobbies": ["Can eat without gaining fat"]},
-    
-"jacques" : { "name": "jacques REMY",
-        "dob": "06/08/2002",
-        "imageurl": "/images/jacquesimage1.jpg",
-        "hobbies": ["Put himself in the friends category"]},
-        
-"amine" : { "name": "amine LATTI",
-        "dob": "24/12/2001",
-        "imageurl": "/images/amineimage1.jpg",
-        "hobbies": ["Fight alone against 7 guys"]},
-
-"jose" : { "name": "jose Alberola Torres",
-        "dob": "06/02/1999",
-        "imageurl": "/images/jose.jpeg",
-        "hobbies": ["Create beautiful website"]}, 
-    }
 
 
-
-router.get('/addnew', (req, res) =>{    
+// Get method to add a new person
+router.get('/addnew', async (req, res) => {
     res.render('personform', {links : linksForHome})
 })
 
-/*router.post('/addnew', (req, res) => {
-    console.log("Data sent via post");
-    console.table(req.body);
-    res.redirect(303, 'personadded',)
-})*/
 
+// Get method when the person is added
 router.get('/personadded', (req, res) =>
     res.render('personadded', {links : linksForHome})
 )
 
 
     
+// Get method to go on the information page about the person
 
-
-router.get('/:name', (req, res) => {
+router.get('/:name', async (req, res) => {
     var name = req.params.name;
-    
-    if (!data[name]) {
-        res.render('404')
+
+    const person = await readFriends({'name': name})
+
+    if (!person) {
+        console.log('404 because person doesn\'t exist');
+        res.render('404');
     }
     else {
-        res.render('person', { person: data[name], links : linksForHome });
+        res.render('person', { person: person, links : linksForHome });
     }
 })
-        
 
-router.get('/', (req,res) =>
-    res.render('listing', { listing: data, links : linksForHome }))
+// Get method to delete a person
+
+router.get('/:name/delete', async (req, res) => {
+    var name = req.params.name;
+
+    await deleteFriends(name);
+
+    req.session.flash =    
+    { type: 'success', intro: 'Data Deleted:', message:  "Data for <strong>" +
+     name + "</strong> has been updated"};
+    
+
+    res.redirect(303, '/friends');
+
+});
+
+// Get method to edit a person
+
+router.get('/:name/edit', async (req, res) => {
+
+    var name = req.params.name;
+
+    const person = await readFriends({'name': name})
+
+    if (!person) {
+        console.log('404 because person doesn\'t exist');
+        res.render('404');
+    }
+    else {
+        res.render('friendseditform', { person: person, links : linksForHome });
+    }
+})
+
+// Post method to edit a person
+
+router.post('/:name/edit', async (req,res) =>{
+
+    await updateFriends(req.body);
+
+    req.session.flash =    
+    { type: 'success', intro: 'Data Updated:', message:  "Data for <strong>" +
+     req.body.name+ "</strong> has been updated"};
+    
+    res.redirect(303, '/friends')
+
+})
+
+// Post method to add a new person
+
+router.post('/addnew', async (req, res) => {
+
+    // note we leave error handling for now and assume our data is created.
+    
+        await createFriends(req.body);
+        req.session.flash =    
+        { type: 'success', intro: 'Data Saved:', message:  "Data for <strong>" +
+         req.body.name+ "</strong> has been added"};
+ 
+        res.redirect(303, '/friends/personadded')
+    })
+        
+// Get method to see all the person on the friends page
+
+router.get('/', async (req, res) =>
+{
+    const friends = await readFriends();
+
+    if (req.session.friendsdata){
+        var newName = req.session.friendsdata.name;
+    }
+    else {
+        var newName = ""
+    }
+
+    res.render('listing', { personlist: friends, newName : newName, links : linksForHome })
+    
+})
+    
 
 module.exports = router;

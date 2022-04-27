@@ -1,3 +1,4 @@
+// Highlight the part where we are on the navbar
 function highlightActiveLink() {
     var links = document.querySelectorAll(".nav-link");
     for (var i = 0; i < links.length; i++) {
@@ -11,6 +12,8 @@ function highlightActiveLink() {
 
 
 window.onload = highlightActiveLink()
+ 
+
 
 //Contact Form in PHP (only work when the website is upload on a server)
 const form = document.querySelector("form"),

@@ -10,12 +10,12 @@
 }
 body
 {
-  min-height: 100vh;
-  height: 175vh;
+  height: 250vh;
   overflow-x: hidden;
   background: #2b2b2b;
   transition: 0.5s;
 }
+
 body.active
 {
     background: #f8f8f8;
@@ -35,6 +35,28 @@ body.active
 #newFriend:after
 {
   background: #fff;
+}
+#editbtn
+{
+  color: rgb(14, 13, 13);
+  font-size: medium;
+  width: 200px;
+  height: 100px;
+}
+#editbtn:after
+{
+  background: #fff;
+}
+#deletebtn
+{
+  color: white;
+  font-size: medium;
+  width: 200px;
+  height: 100px;
+}
+#deletebtn:after
+{
+  background: red;
 }
 .bn5 
 {
@@ -271,7 +293,7 @@ footer
 {
     width: 100%;
     position: absolute;
-    top: 150vh;
+    top: 200vh;
     background: #1b1b1b;
     color: #fff;
     padding: 100px 0 30px;

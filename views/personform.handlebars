@@ -1,17 +1,32 @@
 <h3>Add a new friend :</h3>
 
-<form action="/friends/personadded" method="get">
-    <div class="container" id="addnew">
-        <div class="form-group">
-            <label for='firstname'>First Name</label>
-            <input type=text id='firstname' name='firstname' class='form-control'>
-        </div>
-        <div class="form-group">
-            <label for='surname'>Surname</label>
-            <input type=text id='surname' name='surname' class='form-control'>
-        </div>
-        <button type=submit class="btn btn-primary" id="addPerson">Add Person</button>
+<script>
+// If the length of the element's string is 0 then display helper message 
+function validateForm() {
+  var x = document.forms["myForm"]["firstname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+</script>
 
+    <form method="POST" name="myForm" accept="image/*" onsubmit="return validateForm()">
+        <div class="container" id="addnew">
+            <div class="form-group">
+                <label for='firstname'>First Name</label>
+                <input type=text id='firstname' name='name' class='form-control'>
+                <label for='dob'>Date of Birth</label>
+                <input type=date id='dob' name='dob' class='form-control'>
+                <label for='hobbies'>Choose a super power (make it fun !)</label>
+                <input type=text id='hobbies' name='hobbies' class='form-control'>
+                <label for='imageurl'>Choose an image</label>
+                <input type=file id='imageurl' name='imageurl' accept="image/png, image/jpeg">           
+            </div>
+            
+            <button type=submit class="btn btn-primary" id="addPerson">Add Person</button>
+
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+

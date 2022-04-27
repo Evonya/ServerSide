@@ -9,9 +9,23 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.1.3",
+    "connect-mongodb-session": "^3.1.1",
     "cookie-parser": "^1.4.6",
-    "express": "^4.17.2",
-    "express-handlebars": "^6.0.2"
+    "express": "^4.18.0",
+    "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.3.1"
   },
-  "description": ""
+  "description": "This is the website I have done for my server side web course.",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evonya/ServerSide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Evonya/ServerSide/issues"
+  },
+  "homepage": "https://github.com/Evonya/ServerSide#readme"
 }

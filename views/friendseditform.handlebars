@@ -1,0 +1,30 @@
+
+<h2> Edit </h2>
+<form method="POST">
+<div class="container" id="addnew">
+    <div class="form-group">
+        <label for='firstname'>First Name</label>
+        <input type=text id='firstname' name='name' class='form-control' value={{person.name}} >
+    </div>
+    <div class="form-group">
+        <label for='dob'>Date of Birth</label>
+        <input type="date" id='dob' name='dob' class='form-control' value = "{{person.dob}}" >
+    </div>
+    <div class="form-group">
+        <label for='hobbies'>Superpower</label>
+        <input type=text id='hobbies' name='hobbies' class='form-control' value = "{{person.hobbies}}" >
+    </div>
+
+
+
+    {{!-- This hidden element lets us use the document id --}}
+    <input type="hidden" id="id" name="_id" value="{{person._id}}" />
+
+
+    <button type=submit class="btn btn-primary">Save Changes </button>
+
+      <a href='/friends/{{person.name}}'><button type=button class="btn btn-outline-danger">Cancel</button>
+      </a> 
+
+</div>
+</form>
